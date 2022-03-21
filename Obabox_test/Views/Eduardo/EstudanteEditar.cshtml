@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "EstudanteEditar";
+}
+<h2>Estudantes <small class="fw-lighter">@(Model.Identificador != default(int) ? "Editar" : "Inserir")</small></h2>
+<div class="row">
+    <div class="col-md-2 d-block"><a href="/Eduardo/Estudante" class="btn btn-primary">Buscar</a></div>
+    <div class="col-md-2 d-block"><a href="/Eduardo/EstudanteEditar" class="btn btn-warning">Novo</a></div>
+    <div class="col-md-2 d-block"><a href="/Eduardo/EstudanteEditar_Alterar" id="Salvar" class="btn btn-success">Salvar</a></div>
+</div>
+<div class="row">
+    @{
+        if (Model.Identificador != default(int))
+        {
+            <div class="col-md-2 m-1">
+                <div>
+                    <label for="Identificador">Identificador</label>
+                    <input type="text" class="form-control" id="Identificador" value="@Model.Identificador" disabled />
+                </div>
+            </div>
+        }
+    }
+
+    <div class="col-md-2 m-1">
+        <div>
+            <label for="Nome">Nome</label>
+            <input type="text" class="form-control" id="Nome" value="@Model.Nome" />
+        </div>
+    </div>
+    <div class="col-md-2 m-1">
+        <div>
+            <label for="Curso">Curso</label>
+            <input type="text" class="form-control" id="Curso" value="@Model.Curso" />
+        </div>
+
+    </div>
+    <div class="col-md-3 m-1">
+        <div>
+            <label for="DataNascimento">Data Nascimento</label>
+            <input type="datetime-local" class="form-control" id="DataNascimento" value="@Model.DataNascimento.ToString("yyyy-MM-ddTHH:mm")" />
+        </div>
+
+    </div>
+    <div class="col-md-2 m-1">
+        <div>
+            <label for="Status">Status</label>
+            <select class="form-select" id="Status">
+                <option value="1" @(Model.Status ? "selected" : string.Empty)>Sim</option>
+                <option value="0" @(!Model.Status ? "selected" : string.Empty)>Não</option>
+            </select>
+        </div>
+    </div>
+</div>
+<script src="~/Content/Eduardo/Script/EstudanteEditar.js" defer></script>
